@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.5)
+project(OpenGL)
+
+include_directories("D:/Applications/VCPKG/vcpkg/installed/x64-windows/include")
+link_directories("D:/Applications/VCPKG/vcpkg/installed/x64-windows/lib")
+
+file(GLOB_RECURSE SOURCES ./src/*.c ./src/*.cpp)
+
+if(SOURCES)
+    add_executable(${PROJECT_NAME} ${SOURCES})
+else()
+    message(FATAL_ERROR "No source files found!")
+endif()
+
+target_link_libraries(${PROJECT_NAME} glfw3dll opengl32)
